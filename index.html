@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Веб-приложение: Музей Искусств</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Museum Digital</h1>
+            <nav class="nav">
+                <a href="#gallery" class="nav-link">Галерея</a>
+                <a href="#tickets" class="nav-link">Заказ билетов</a>
+                <div class="favorites-counter">Избранное: <span id="fav-count">0</span></div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="gallery" class="section">
+            <h2 class="section-title">Виртуальная экспозиция</h2>
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="classic">Классика</button>
+                <button class="filter-btn" data-filter="modern">Модерн</button>
+            </div>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Карточки генерируются скриптом -->
+            </div>
+        </section>
+
+        <section id="tickets" class="section">
+            <h2 class="section-title">Онлайн-касса</h2>
+            <div class="booking-container">
+                <form id="booking-form" class="booking-form">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" required placeholder="Введите имя">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Электронная почта</label>
+                        <input type="email" id="email" required placeholder="example@mail.ru">
+                    </div>
+                    <div class="form-group">
+                        <label for="ticket-type">Тип билета</label>
+                        <select id="ticket-type">
+                            <option value="standard">Стандартный (500 руб.)</option>
+                            <option value="student">Студенческий (250 руб.)</option>
+                            <option value="льготный">Льготный (бесплатно)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-btn">Оформить билет</button>
+                </form>
+                <div id="form-message" class="form-message"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Музейный комплекс «Digital Art». Курсовой проект.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
