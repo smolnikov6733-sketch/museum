@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             museumCode: "louvre",
             museumName: "Лувр (Париж)",
             price: 650,
-            image: "images/louvre.jpg"
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/500px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"
         },
         {
             id: 3,
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             museumCode: "louvre",
             museumName: "Лувр (Париж)",
             price: 650,
-            image: "images/ermine.jpg"
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg/960px-Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg"
         },
         {
             id: 6,
