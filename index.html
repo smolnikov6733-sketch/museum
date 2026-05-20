@@ -3,65 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Веб-приложение: Музей Искусств</title>
+    <title>Museum Digital — Единый портал музеев мира</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">Museum Digital</h1>
-            <nav class="nav">
-                <a href="#gallery" class="nav-link">Галерея</a>
-                <a href="#tickets" class="nav-link">Заказ билетов</a>
-                <div class="favorites-counter">Избранное: <span id="fav-count">0</span></div>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo">MUSEUM DIGITAL</div>
+            <nav class="navigation">
+                <button class="nav-link active" data-tab="about">О проекте</button>
+                <button class="nav-link" data-tab="catalog">Музеи и Экспонаты</button>
+                <button class="nav-link" data-tab="cart-section">Корзина и заказ</button>
             </nav>
+            <div class="header-widgets">
+                <div class="widget fav-widget">Избранное: <span id="fav-count">0</span></div>
+                <div class="widget cart-widget">Корзина: <span id="cart-count">0</span></div>
+            </div>
         </div>
     </header>
 
-    <main class="container">
-        <section id="gallery" class="section">
-            <h2 class="section-title">Виртуальная экспозиция</h2>
-            <div class="filter-controls">
-                <button class="filter-btn active" data-filter="all">Все</button>
-                <button class="filter-btn" data-filter="classic">Классика</button>
-                <button class="filter-btn" data-filter="modern">Модерн</button>
-            </div>
-            <div id="gallery-grid" class="gallery-grid">
-                <!-- Карточки генерируются скриптом -->
+    <main>
+        <section id="about" class="tab-section">
+            <div class="container">
+                <h1>Единое цифровое пространство мировых шедевров</h1>
+                <p>Museum Digital — это интерактивная платформа-агрегатор, объединяющая экспозиции крупнейших музеев планеты. Перейдите во вкладку <b>«Музеи и Экспонаты»</b>, чтобы выбрать интересующие вас выставки в различных музеях мира, сформировать персональный единый билет и спланировать культурную программу.</p>
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="promo-btn" id="go-to-catalog-btn">Перейти к выбору музеев &rarr;</button>
+                </div>
             </div>
         </section>
 
-        <section id="tickets" class="section">
-            <h2 class="section-title">Онлайн-касса</h2>
-            <div class="booking-container">
-                <form id="booking-form" class="booking-form">
-                    <div class="form-group">
-                        <label for="name">Ваше имя</label>
-                        <input type="text" id="name" required placeholder="Введите имя">
+        <section id="catalog" class="tab-section hidden">
+            <div class="container">
+                <h2>Экспозиции музеев мира</h2>
+                <p class="section-subtitle">Используйте фильтр ниже для выбора конкретного музейного комплекса:</p>
+                
+                <div class="filter-panel">
+                    <button class="filter-btn active" data-museum="all">Все музеи</button>
+                    <button class="filter-btn" data-museum="hermitage">Эрмитаж</button>
+                    <button class="filter-btn" data-museum="louvre">Лувр</button>
+                    <button class="filter-btn" data-museum="tretyakov">Третьяковская галерея</button>
+                    <button class="filter-btn" data-museum="moma">MoMA (Нью-Йорк)</button>
+                </div>
+
+                <div id="gallery-grid" class="gallery-grid">
                     </div>
-                    <div class="form-group">
-                        <label for="email">Электронная почта</label>
-                        <input type="email" id="email" required placeholder="example@mail.ru">
+            </div>
+        </section>
+
+        <section id="cart-section" class="tab-section hidden">
+            <div class="container">
+                <h2>Оформление единого билета</h2>
+                
+                <div class="booking-grid">
+                    <div class="cart-preview-block">
+                        <h3>Выбранные экспозиции и экскурсии</h3>
+                        <p class="section-desc-small">Ниже отображаются входные билеты в музеи, добавленные вами из каталога.</p>
+                        
+                        <ul id="cart-items-list" class="cart-items-list">
+                            <li class="empty-cart-msg">Ваша корзина пуста. Выберите билеты во вкладке «Музеи и Экспонаты», чтобы продолжить.</li>
+                        </ul>
+                        
+                        <div class="total-price-box">
+                            Итого к оплате: <span><span id="total-price-val">0</span> ₽</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="ticket-type">Тип билета</label>
-                        <select id="ticket-type">
-                            <option value="standard">Стандартный (500 руб.)</option>
-                            <option value="student">Студенческий (250 руб.)</option>
-                            <option value="льготный">Льготный (бесплатно)</option>
-                        </select>
+
+                    <div class="form-booking-block">
+                        <h3>Регистрация билетов</h3>
+                        <p class="section-desc-small">Укажите персональные данные для формирования и отправки электронных билетов.</p>
+
+                        <form id="ticket-form" class="ticket-form">
+                            <div class="form-group">
+                                <label for="user-name">Ваше имя и фамилия:</label>
+                                <input type="text" id="user-name" placeholder="Иван Иванов" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user-email">Адрес электронной почты:</label>
+                                <input type="email" id="user-email" placeholder="example@mail.ru" required>
+                            </div>
+                            <button type="submit" class="submit-btn">Оформить заказ билетов</button>
+                        </form>
                     </div>
-                    <button type="submit" class="submit-btn">Оформить билет</button>
-                </form>
-                <div id="form-message" class="form-message"></div>
+                </div>
+
             </div>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container">
-            <p>&copy; 2024 Музейный комплекс «Digital Art». Курсовой проект.</p>
+            <p>&copy; 2026 Museum Digital. Курсовая работа по веб-разработке. Все права защищены.</p>
         </div>
     </footer>
 

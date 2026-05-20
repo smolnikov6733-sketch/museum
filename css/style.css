@@ -1,3 +1,12 @@
+:root {
+    --primary-color: #111111;
+    --accent-color: #705a3e;
+    --bg-light: #f9f9f9;
+    --border-color: #e5e5e5;
+    --error-color: #ff3b30;
+    --success-color: #34c759;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,201 +14,389 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #222222;
+    background-color: #ffffff;
     line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+}
+
+.hidden {
+    display: none !important;
 }
 
 .container {
-    max-width: 1100px;
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 40px 0;
 }
 
-.header {
+/* Шапка и навигация кнопками-вкладками */
+.site-header {
     background-color: #ffffff;
-    padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
-.header .container {
+.header-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 0;
 }
 
-.nav {
+.logo {
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+}
+
+.navigation {
     display: flex;
-    gap: 20px;
-    align-items: center;
+    gap: 10px;
 }
 
 .nav-link {
-    text-decoration: none;
-    color: #333;
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 0.95rem;
     font-weight: 500;
-    transition: color 0.3s;
+    color: #555555;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
 }
 
 .nav-link:hover {
-    color: #007bff;
+    color: var(--primary-color);
+    background-color: #f0f0f0;
 }
 
-.favorites-counter {
-    background: #007bff;
-    color: white;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.9em;
+.nav-link.active {
+    color: #ffffff;
+    background-color: var(--primary-color);
 }
 
-.section {
-    padding: 60px 0;
+.header-widgets {
+    display: flex;
+    gap: 10px;
 }
 
-.section-title {
+.widget {
+    font-weight: 600;
+    font-size: 0.85rem;
+    background-color: var(--bg-light);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* Вкладка: О проекте */
+.tab-section h1 {
+    font-size: 2.5rem;
     text-align: center;
-    margin-bottom: 40px;
-    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: 800;
 }
 
-.filter-controls {
+.tab-section p {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    text-align: center;
+    color: #555555;
+    font-size: 1.1rem;
+}
+
+.promo-btn {
+    padding: 12px 30px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.promo-btn:hover {
+    background-color: #56442e;
+}
+
+/* Панель выбора музеев */
+.tab-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px !important;
+}
+
+.filter-panel {
     display: flex;
     justify-content: center;
+    margin-bottom: 40px;
     gap: 10px;
-    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .filter-btn {
-    padding: 8px 20px;
-    border: 1px solid #ddd;
-    background: white;
+    padding: 10px 20px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
     cursor: pointer;
-    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
-.filter-btn.active {
-    background: #333;
-    color: white;
-    border-color: #333;
+.filter-btn:hover, .filter-btn.active {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border-color: var(--accent-color);
 }
 
+/* Сетка галереи */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
 }
 
-.card {
-    background: white;
-    border-radius: 10px;
+.exhibit-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card-img {
-    width: 100%;
-    height: 200px;
-    background-color: #eee;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4em;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card-body {
+.exhibit-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* Контейнер для отображения реальных картин */
+.image-container {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background-color: #eaeaea;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняет пропорции картины, заполняя блок */
+    transition: transform 0.4s ease;
+}
+
+.exhibit-card:hover .image-container img {
+    transform: scale(1.05); /* Эффект приближения при наведении */
+}
+
+.card-content {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
-.card-title {
-    font-size: 1.2em;
+.museum-badge {
+    align-self: flex-start;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: #f4f0e6;
+    color: var(--accent-color);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.card-content h3 {
+    font-size: 1.15rem;
     margin-bottom: 5px;
+    font-weight: 700;
 }
 
-.card-author {
-    color: #777;
-    font-size: 0.9em;
+.author {
+    color: #666666;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+.year {
+    color: #999999;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.price-tag {
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 1.05rem;
     margin-bottom: 15px;
 }
 
-.fav-btn {
-    width: 100%;
-    padding: 10px;
-    background: #f0f0f0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.card-actions {
+    margin-top: auto;
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 10px 2px;
+    font-size: 0.85rem;
     font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    transition: all 0.15s ease;
+    text-align: center;
+}
+
+.action-btn:hover {
+    background-color: #eeeeee;
 }
 
 .fav-btn.active {
-    background: #ff4757;
-    color: white;
+    background-color: #ffeef0;
+    color: var(--error-color);
+    border-color: #ffa3a6;
 }
 
-.booking-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
+.cart-btn.active {
+    background-color: #eafaf1;
+    color: var(--success-color);
+    border-color: #a3e9be;
+}
+
+/* Блок корзины */
+.booking-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.cart-preview-block, .form-booking-block {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-radius: 8px;
 }
 
-.form-group {
+.cart-preview-block h3, .form-booking-block h3 {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+}
+
+.section-desc-small {
+    font-size: 0.85rem;
+    color: #777777;
     margin-bottom: 20px;
+}
+
+.cart-items-list {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.cart-item-node {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eeeeee;
+    font-size: 0.95rem;
+}
+
+.item-museum-prefix {
+    font-size: 0.75rem;
+    color: #888888;
+    display: block;
+}
+
+.empty-cart-msg {
+    color: #999999;
+    font-style: italic;
+    padding: 10px 0;
+}
+
+.total-price-box {
+    border-top: 2px solid var(--primary-color);
+    padding-top: 15px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Форма */
+.form-group {
+    margin-bottom: 15px;
 }
 
 .form-group label {
     display: block;
     margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.85rem;
 }
 
-.form-group input, .form-group select {
+.form-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
 }
 
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background: #28a745;
-    color: white;
+    background-color: var(--primary-color);
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
-    font-size: 1em;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
-.form-message {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 5px;
-    display: none;
+.submit-btn:hover {
+    background-color: #333333;
 }
 
-.footer {
-    background: #333;
-    color: white;
-    padding: 40px 0;
+.site-footer {
+    border-top: 1px solid var(--border-color);
     text-align: center;
-    margin-top: 60px;
+    padding: 25px 0;
+    color: #999999;
+    font-size: 0.85rem;
+    margin-top: 40px;
 }
 
-@media (max-width: 768px) {
-    .header .container {
-        flex-direction: column;
-        gap: 15px;
-    }
+@media (max-width: 850px) {
+    .booking-grid { grid-template-columns: 1fr; }
+    .header-container { flex-direction: column; gap: 10px; }
 }
